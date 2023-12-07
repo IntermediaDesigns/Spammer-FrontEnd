@@ -3,9 +3,7 @@ import { useState } from 'react';
 import { API_URL } from '../lib/API_URL.js';
 import styles from '../page.module.css';
 import Comments from './Comments.jsx';
-
-// EDIT post
-
+import { useRouter } from 'next/navigation.js';
 
 /// LIKE function
 export default function Posts({ post }) {
