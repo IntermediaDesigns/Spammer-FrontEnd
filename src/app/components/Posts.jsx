@@ -74,7 +74,7 @@ export default function Posts({ post }) {
       setErrorMessage('No changes were made to the post.');
       return;
     }
-  
+
     const response = await fetch(`${API_URL}/api/posts/${id}`, {
       method: 'PUT',
       headers: {
@@ -82,11 +82,11 @@ export default function Posts({ post }) {
       },
       body: JSON.stringify({ text: editedText }),
     });
-  
+
     if (!response.ok) {
       throw new Error('Error editing post');
     }
-  
+
     router.refresh();
     setIsEditing(false);
     setErrorMessage('');
@@ -95,7 +95,9 @@ export default function Posts({ post }) {
   return (
     <div key={post.id}>
       <div className={styles.postsContainer}>
-      {isEditing && errorMessage && <p className={styles.errorText}>⛔ {errorMessage}</p>}
+        {isEditing && errorMessage && (
+          <p className={styles.errorText}>⛔ {errorMessage}</p>
+        )}
         {isEditing ? (
           <div className={styles.editContainer}>
             <textarea
@@ -128,7 +130,7 @@ export default function Posts({ post }) {
             {likes} 👍
           </p>
           <p
-            className={styles.emoji} 
+            className={styles.emoji}
             onClick={() => {
               setShowCommentBox(!showCommentBox);
               setErrorMessage('');
