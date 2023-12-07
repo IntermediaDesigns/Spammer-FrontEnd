@@ -8,6 +8,7 @@
   margin: 0;
   color: white;
   text-shadow: 2px 2px 4px black;
+  text-align: center;
 }
 
 .newPostsContainer {
@@ -118,9 +119,9 @@
 .showCommentsContainer{
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-end;
-  width: 80vw;
+  align-items: center;
+  justify-content: center;
+  width: 70vw;
   margin-left: auto;
   margin-right: auto;
   
