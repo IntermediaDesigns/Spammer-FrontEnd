@@ -47,11 +47,11 @@ export default function NewPosts() {
              setText(e.target.value);
              setError('');
            }}
-           placeholder="What's your message?"
+           placeholder="I want the world to know.."
            className={styles.textInput}
          />
          <button className={styles.submitBtn} type='submit'>
-           Post Message
+           Submit Post
          </button>
        </form>
        {error && <p className={styles.errorMessage}>⛔ {error}</p>}
