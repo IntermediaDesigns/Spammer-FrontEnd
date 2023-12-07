@@ -38,7 +38,7 @@ export default function Posts({ post }) {
     window.location.reload();
   };
 
-    // Make a comment function
+  // Make a comment function
   
 
   return (
