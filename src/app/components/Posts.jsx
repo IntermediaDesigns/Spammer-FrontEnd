@@ -70,6 +70,11 @@ export default function Posts({ post }) {
 
   // Edit post function
   const editPost = async (id) => {
+    if (editedText === post.text) {
+      setErrorMessage('No changes were made to the post.');
+      return;
+    }
+  
     const response = await fetch(`${API_URL}/api/posts/${id}`, {
       method: 'PUT',
       headers: {
@@ -77,24 +82,27 @@ export default function Posts({ post }) {
       },
       body: JSON.stringify({ text: editedText }),
     });
-
+  
     if (!response.ok) {
       throw new Error('Error editing post');
     }
-
+  
     router.refresh();
     setIsEditing(false);
+    setErrorMessage('');
   };
 
   return (
     <div key={post.id}>
       <div className={styles.postsContainer}>
+      {isEditing && errorMessage && <p className={styles.errorText}>⛔ {errorMessage}</p>}
         {isEditing ? (
           <div className={styles.editContainer}>
             <textarea
               className={styles.editText}
               value={editedText}
               onChange={(e) => setEditedText(e.target.value)}
+              onClick={() => setErrorMessage('')}
             />
             <div className={styles.btnContainer}>
               <button
@@ -136,6 +144,7 @@ export default function Posts({ post }) {
             onClick={() => {
               setIsEditing(true);
               setEditedText(post.text);
+              setErrorMessage('');
             }}
           >
             📝
