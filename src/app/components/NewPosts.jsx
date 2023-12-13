@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import styles from '../page.module.css';
 import { API_URL } from '../lib/API_URL.js';
-import { useRouter } from 'next/navigation.js';
+import { useRouter } from 'next/navigation';
 
 export default function NewPosts() {
        const [text, setText] = useState('');
